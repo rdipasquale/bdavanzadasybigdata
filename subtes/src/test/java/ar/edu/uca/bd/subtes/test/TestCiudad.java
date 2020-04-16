@@ -1,6 +1,9 @@
 package ar.edu.uca.bd.subtes.test;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -49,5 +52,13 @@ public class TestCiudad {
 		assertTrue(ciudades.iterator().hasNext());
 		
 	}
+	
+	@Test
+	public void testFindCiudadesByNombre()
+	{
+		List<Ciudad> ciudades=ciudadRep.findByNombre("CABA");		
+		assertEquals(ciudades.size(),1);
+		
+	}	
 	
 }
