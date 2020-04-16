@@ -1,23 +1,32 @@
 package ar.edu.uca.bd.subtes.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Linea {
 
+	@Id
+	@Column(length = 8)
 	private String id;
 	private Double longitudTotal;
+	@ManyToOne(fetch = FetchType.LAZY )
+	@JoinColumn(name = "ciudadId",nullable = false)
 	private Ciudad ciudad;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "estacionCabeceraId",nullable = false)
 	private Estacion cabecera;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "estacionFinId",nullable = false)
 	private Estacion fin;
 	
 	public Linea() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public Double getLongitudTotal() {
@@ -52,6 +61,14 @@ public class Linea {
 		this.fin = fin;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,6 +94,12 @@ public class Linea {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Linea [id=" + id + ", longitudTotal=" + longitudTotal + ", ciudad=" + ciudad + ", cabecera=" + cabecera
+				+ ", fin=" + fin + "]";
+	}
+
 	public Linea(String id, Double longitudTotal, Ciudad ciudad, Estacion cabecera, Estacion fin) {
 		super();
 		this.id = id;
@@ -86,11 +109,6 @@ public class Linea {
 		this.fin = fin;
 	}
 
-	@Override
-	public String toString() {
-		return "Linea [id=" + id + ", longitudTotal=" + longitudTotal + ", ciudad=" + ciudad + ", cabecera=" + cabecera
-				+ ", fin=" + fin + "]";
-	}
 	
 	
 }

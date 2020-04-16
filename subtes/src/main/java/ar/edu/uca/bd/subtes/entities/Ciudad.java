@@ -1,10 +1,19 @@
 package ar.edu.uca.bd.subtes.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Ciudad {
 
+	@Id
 	private int id;
+	@Column(nullable = false)
 	private String nombre;
+	@Column(nullable = true,scale = 2,precision = 8)
 	private Double latitud;
+	@Column(nullable = true,scale = 2,precision = 8)
 	private Double longitud;
 	
 	public Ciudad() {

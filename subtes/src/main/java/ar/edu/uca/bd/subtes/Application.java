@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 @SpringBootApplication
-@EnableJpaRepositories("ar.edu.uca.project_template.repositories")
+@EnableJpaRepositories("ar.edu.uca.bd.subtes.repositories")
 @EnableTransactionManagement
 @ComponentScan
 @EnableAutoConfiguration
