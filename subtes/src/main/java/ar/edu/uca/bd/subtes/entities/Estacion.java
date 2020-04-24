@@ -105,8 +105,9 @@ public class Estacion {
 
 	@Override
 	public String toString() {
-		return "Estacion [id=" + id + ", nombre=" + nombre + ", linea=" + linea + ", conectaCon=" + conectaCon + "]";
+		return "Estacion [id=" + id + ", nombre=" + nombre + "]";
 	}
-	
+
+
 	
 }

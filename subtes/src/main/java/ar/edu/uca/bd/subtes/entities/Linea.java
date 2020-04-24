@@ -19,10 +19,10 @@ public class Linea {
 	@JoinColumn(name = "ciudadId",nullable = false)
 	private Ciudad ciudad;
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "estacionCabeceraId",nullable = false)
+	@JoinColumn(name = "estacionCabeceraId",nullable = true)
 	private Estacion cabecera;
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "estacionFinId",nullable = false)
+	@JoinColumn(name = "estacionFinId",nullable = true)
 	private Estacion fin;
 	
 	public Linea() {
@@ -94,10 +94,10 @@ public class Linea {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Linea [id=" + id + ", longitudTotal=" + longitudTotal + ", ciudad=" + ciudad + ", cabecera=" + cabecera
-				+ ", fin=" + fin + "]";
+		return "Linea [id=" + id + "]";
 	}
 
 	public Linea(String id, Double longitudTotal, Ciudad ciudad, Estacion cabecera, Estacion fin) {

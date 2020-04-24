@@ -1,7 +1,8 @@
 package ar.edu.uca.bd.subtes.services;
 
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -42,32 +43,20 @@ public class SubteService {
 		return ciudadRep.findAll();
 	}
 	
-//	public Iterable<Estacion> findAllEstacionesByLinea(Linea linea)
-//	{
-//		Estacion estacionActual = linea.getCabecera();
-//		ArrayList<Estacion> recorrido = new ArrayList<Estacion>();
-//		
-//		Set<Estacion> estacionesPosibles = estRep.findByLinea(linea);
-//		
-//		estacionesPosibles.remove(cabecera);	
-//		
-//		while (estacionActual.getConectaCon t)
-//		
-//		while(!estacionesPosibles.isEmpty())
-//		{
-//			recorrido.add(estacionActual);
-//			estacionActual.getConectaCon().forEach((Estacion estacionVecina)->{
-//				if(estacionVecina.getLinea)
-//			});
-//			
-//		}
-//		
-//		1)
-//			Estacion 1 -> Estacion 2 -> est...
-//		
-//		
-//		
-//		
-//	}
+	public List<Estacion> findAllEstacionesByLinea(Linea linea)
+	{
+		Estacion estacionActual = linea.getCabecera();
+		ArrayList<Estacion> recorrido = new ArrayList<Estacion>();
+		
+		recorrido.add(estacionActual);
+		while (!estacionActual.equals(linea.getFin()))
+		{
+			Estacion siguiente=estacionActual.getConectaCon().stream().filter(e->e.getLinea().equals(linea) && !recorrido.contains(e)).collect(Collectors.toList()).get(0);
+			recorrido.add(siguiente);
+			estacionActual=siguiente;
+		}
+
+		return recorrido;
+	}
 	
 }

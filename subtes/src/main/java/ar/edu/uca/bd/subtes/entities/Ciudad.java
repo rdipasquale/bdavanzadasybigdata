@@ -74,9 +74,11 @@ public class Ciudad {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Ciudad [id=" + id + ", nombre=" + nombre + ", latitud=" + latitud + ", longitud=" + longitud + "]";
+		return "Ciudad [id=" + id + ", nombre=" + nombre + "]";
 	}
 
 	public Ciudad(int id, String nombre, Double latitud, Double longitud) {
