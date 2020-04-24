@@ -59,4 +59,20 @@ public class SubteService {
 		return recorrido;
 	}
 	
+	public List<Estacion> findCaminoEntreEstaciones(Estacion origen, Estacion destino)
+	{
+		Estacion estacionActual = origen;
+		ArrayList<Estacion> recorrido = new ArrayList<Estacion>();
+		
+		
+		recorrido.add(estacionActual);
+		
+		while (!estacionActual.equals(destino))
+		{
+			
+		}
+
+		return recorrido;
+	}
+	
 }
