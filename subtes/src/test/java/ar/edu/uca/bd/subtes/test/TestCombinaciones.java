@@ -52,9 +52,10 @@ public class TestCombinaciones {
 	
 	
 	private Estacion estacionAlem = new Estacion(5, "Leandro N. Alem", null, null);
-	private Estacion estacionFlorida = new Estacion(3, "Florida", null, null);
-	private Estacion estacionPellegrini = new Estacion(4, "Carlos Pellegrini", null, null);
-	
+	private Estacion estacionFlorida = new Estacion(6, "Florida", null, null);
+	private Estacion estacionPellegrini = new Estacion(7, "Carlos Pellegrini", null, null);
+	private Estacion estacionUruguay = new Estacion(8, "Uruguay", null, null);
+	private Estacion estacionPueyrredon = new Estacion(9, "Pueyrredon", null, null);
 	
 	@Before
 	public void setUp()
@@ -81,6 +82,8 @@ public class TestCombinaciones {
 		estacionAlem.setLinea(lineaB);
 		estacionFlorida.setLinea(lineaB);
 		estacionPellegrini.setLinea(lineaB);
+		estacionUruguay.setLinea(lineaB);
+		estacionPueyrredon.setLinea(lineaB);
 
 		estacionRep.save(estacionCatedral);
 		estacionRep.save(estacion9DeJulio);		
@@ -90,6 +93,8 @@ public class TestCombinaciones {
 		estacionRep.save(estacionAlem);
 		estacionRep.save(estacionFlorida);		
 		estacionRep.save(estacionPellegrini);
+		estacionRep.save(estacionUruguay);
+		estacionRep.save(estacionPueyrredon);
 		
 		
 		//Conexiones de linea A
@@ -126,6 +131,18 @@ public class TestCombinaciones {
 		estacionPellegrini.getConectaCon().add(estacionFlorida);
 		estacionPellegrini.getConectaCon().add(estacion9DeJulio);
 		
+		estacionPellegrini.setConectaCon(new HashSet<Estacion>());
+		estacionPellegrini.getConectaCon().add(estacionFlorida);
+		estacionPellegrini.getConectaCon().add(estacion9DeJulio);
+		estacionPellegrini.getConectaCon().add(estacionUruguay);
+		
+		estacionUruguay.setConectaCon(new HashSet<Estacion>());
+		estacionUruguay.getConectaCon().add(estacionPellegrini);
+		estacionUruguay.getConectaCon().add(estacionPueyrredon);
+		
+		estacionPueyrredon.setConectaCon(new HashSet<Estacion>());
+		estacionPueyrredon.getConectaCon().add(estacionUruguay);
+		
 		
 		//Guardado
 		
@@ -142,7 +159,7 @@ public class TestCombinaciones {
 		lineaA.setFin(estacionCongreso);		
 		
 		lineaB.setCabecera(estacionAlem);
-		lineaB.setFin(estacionPellegrini);
+		lineaB.setFin(estacionPueyrredon);
 		
 		lineaRep.save(lineaA);
 		lineaRep.save(lineaB);
@@ -161,14 +178,15 @@ public class TestCombinaciones {
 		Estacion estacionB = lineaB.getFin();
 		
 		List<Estacion> reco=ser.findCaminoEntreEstaciones(estacionA, estacionB);
-		assertEquals(reco.get(0),lineaA.getCabecera());
+		assertEquals(reco.get(0),estacionA);
 		assertEquals(reco.get(1),estacion9DeJulio);
 		assertEquals(reco.get(2),estacionPellegrini);
-		assertEquals(reco.get(3),estacionFlorida);
-		assertEquals(reco.get(4),estacionAlem);
+		assertEquals(reco.get(3),estacionUruguay);
+		assertEquals(reco.get(4),estacionPueyrredon);
 		
 	}
 	
 
+	
 	
 }
