@@ -183,7 +183,7 @@ public class TestCombinaciones {
 	}
 	
 	@Test
-	public void testRecorridoEntreEstaciones()
+	public void testRecorridoEntreEstacionesNoTerminales()
 	{
 		Estacion estacionA = estacionFlorida;
 		Estacion estacionB = estacionCongreso;
