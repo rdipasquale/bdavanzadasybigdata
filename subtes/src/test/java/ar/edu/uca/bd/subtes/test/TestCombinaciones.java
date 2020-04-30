@@ -130,10 +130,6 @@ public class TestCombinaciones {
 		estacionPellegrini.setConectaCon(new HashSet<Estacion>());
 		estacionPellegrini.getConectaCon().add(estacionFlorida);
 		estacionPellegrini.getConectaCon().add(estacion9DeJulio);
-		
-		estacionPellegrini.setConectaCon(new HashSet<Estacion>());
-		estacionPellegrini.getConectaCon().add(estacionFlorida);
-		estacionPellegrini.getConectaCon().add(estacion9DeJulio);
 		estacionPellegrini.getConectaCon().add(estacionUruguay);
 		
 		estacionUruguay.setConectaCon(new HashSet<Estacion>());
@@ -183,6 +179,21 @@ public class TestCombinaciones {
 		assertEquals(reco.get(2),estacionPellegrini);
 		assertEquals(reco.get(3),estacionUruguay);
 		assertEquals(reco.get(4),estacionPueyrredon);
+		
+	}
+	
+	@Test
+	public void testRecorridoEntreEstaciones()
+	{
+		Estacion estacionA = estacionFlorida;
+		Estacion estacionB = estacionCongreso;
+		
+		List<Estacion> reco=ser.findCaminoEntreEstaciones(estacionA, estacionB);
+		assertEquals(reco.get(0),estacionA);
+		assertEquals(reco.get(1),estacionPellegrini);
+		assertEquals(reco.get(2),estacion9DeJulio);
+		assertEquals(reco.get(3),estacionTribunales);
+		assertEquals(reco.get(4),estacionCongreso);
 		
 	}
 	
