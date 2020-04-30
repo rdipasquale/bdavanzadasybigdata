@@ -10,6 +10,7 @@ public class Concepto {
 	private String id;
 	private String descripcion;
 	private String grupo;
+	
 
 	public Concepto() {
 		// TODO Auto-generated constructor stub
