@@ -8,7 +8,7 @@ import ar.edu.uca.bd.subtes.entities.Estacion;
 import ar.edu.uca.bd.subtes.entities.Linea;
 
 
-public interface EstacionRepository extends Neo4jRepository<Estacion, String> {
+public interface EstacionRepository extends Neo4jRepository<Estacion, Long> {
 	
 	public Set<Estacion> findByLinea(Linea linea);
 
